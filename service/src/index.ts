@@ -29,6 +29,7 @@ router.post('/chat-process', [auth, limiter], async (req, res) => {
       message: prompt,
       lastContext: options,
       process: (chat: ChatMessage) => {
+				console.log("=========== chat : ", chat)
         res.write(firstChunk ? JSON.stringify(chat) : `\n${JSON.stringify(chat)}`)
         firstChunk = false
       },
